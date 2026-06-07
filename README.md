@@ -1,6 +1,6 @@
 # Total Goals Model — English Football (PL, Championship, League One)
 
-A model that predicts the **total goals** in a match as a full probability distribution rather than a point estimate, built across a five notebook pipeline that runs end-to-end from raw `match_data.csv` to a held out test evaluation.
+A model that predicts the **total goals** in a match as a full probability distribution rather than a point estimate, built across a five notebook pipeline that runs end-to-end from raw `match_data.csv` to a held-out test evaluation.
 
 ---
 
@@ -68,6 +68,7 @@ Held-out test set (**2024/25 + 2025/26, 2,488 fixtures**):
 **02 — Cleaning**
 - Typing, de-duplication, and range/validity checks before anything downstream.
 - Resolving missing xG in two cases: a few stray nulls verified against source as true `0.0` (filled); League One 2018/19 had no xG tracking (left `NaN`, flagged, excluded from modelling).
+- Retained the Covid/no-crowd matches rather than dropping them: the effect on total goals is small, and deleting ~1.5 seasons would cost more in rolling-prior quality than it removes in bias; the regime is instead exposed to the model via the is_crowds flag.
 
 **03 — Features**
 - Splitting each match into **two rows (one per team)**, with the target being that team's goals, then re-pairing by match to form the scoreline.
@@ -87,13 +88,14 @@ Held-out test set (**2024/25 + 2025/26, 2,488 fixtures**):
 
 ## Key decisions
 
-- **Modelling each team's goals, then multiplying the two into a scoreline distribution**: rather than modelling the total directly, I used the same scoreline matrix prices every market at once, and all prices stay mutually consistent.
+- **Modelling each team's goals, then multiplying the two into a scoreline distribution**: rather than modelling the total directly, the same scoreline matrix prices every market at once, and all prices stay mutually consistent.
 - **A Poisson family, chosen from the data**: the ~0.99 variance/mean ratio justifies a Poisson objective and Poisson score distributions empirically, not by convention.
 - **Length-L window with decay-ALPHA priors**: rolling team rates that weight recent form more heavily; L and ALPHA are tuned, not assumed.
 - **A deliberately compact feature set**: selection keeps the *smallest* subset within CV-noise tolerance of the best loss, because chasing the absolute-best number would fit noise; the compact set is stabler and cheaper to run.
 - **A league-average baseline as the benchmark**: naive by design, but near-optimal given the Poisson structure, so an honest bar to clear.
 - **Strict leakage control**: EDA on training data, features recorded before each match enters the rolling buffers, expanding-window CV by season, and the last two seasons held out and touched once.
 - **Log loss as the primary metric**: a proper scoring rule that grades the whole distribution, which is what matters for pricing.
+- **One pooled model, not three per-league splits**: for data efficiency, the league flag and league-aware priors were in the original feature set, so the model could pick up division specific patterns contextually rather than hard-splitting the data.
 
 ---
 
