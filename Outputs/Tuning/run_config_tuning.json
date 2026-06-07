@@ -1,0 +1,176 @@
+{
+  "selected_features_source": "../Outputs/Features/selected_features.json",
+  "selected_features": [
+    "team_avg_gls_f_v",
+    "team_avg_xg_f",
+    "team_avg_xg_c",
+    "opp_avg_xg_c",
+    "game_week_normalised"
+  ],
+  "starting_L": 10,
+  "starting_ALPHA": 0.0,
+  "best_L": 40,
+  "best_ALPHA": 0.05,
+  "best_xgb_params": {
+    "colsample_bytree": 0.6,
+    "enable_categorical": true,
+    "learning_rate": 0.01,
+    "max_depth": 3,
+    "min_child_weight": 5,
+    "n_estimators": 400,
+    "objective": "count:poisson",
+    "random_state": 2026,
+    "reg_alpha": 1,
+    "reg_lambda": 0.1,
+    "subsample": 0.5,
+    "verbosity": 0
+  },
+  "validation_seasons": [
+    "2019/2020",
+    "2020/2021",
+    "2021/2022",
+    "2022/2023",
+    "2023/2024"
+  ],
+  "test_season_cutoff": "2024/2025",
+  "search_settings": {
+    "L_GRID": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50
+    ],
+    "ALPHA_GRID": [
+      0.0,
+      0.02,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.35,
+      0.5
+    ],
+    "PAIR_BLOCKS": [
+      [
+        "n_estimators+learning_rate",
+        [
+          [
+            "n_estimators",
+            [
+              100,
+              200,
+              400,
+              600,
+              800,
+              1000,
+              1200
+            ]
+          ],
+          [
+            "learning_rate",
+            [
+              0.01,
+              0.02,
+              0.05,
+              0.1,
+              0.2
+            ]
+          ]
+        ]
+      ],
+      [
+        "max_depth+min_child_weight",
+        [
+          [
+            "max_depth",
+            [
+              2,
+              3,
+              4,
+              5
+            ]
+          ],
+          [
+            "min_child_weight",
+            [
+              1,
+              5,
+              10,
+              20,
+              30
+            ]
+          ]
+        ]
+      ],
+      [
+        "subsample+colsample_bytree",
+        [
+          [
+            "subsample",
+            [
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9,
+              1.0
+            ]
+          ],
+          [
+            "colsample_bytree",
+            [
+              0.5,
+              0.6,
+              0.7,
+              0.8,
+              0.9,
+              1.0
+            ]
+          ]
+        ]
+      ],
+      [
+        "reg_alpha+reg_lambda",
+        [
+          [
+            "reg_alpha",
+            [
+              0,
+              1,
+              5,
+              10,
+              20
+            ]
+          ],
+          [
+            "reg_lambda",
+            [
+              0.1,
+              0.5,
+              1.0,
+              5.0
+            ]
+          ]
+        ]
+      ]
+    ],
+    "XGB_STARTS": [
+      "03_best"
+    ],
+    "RANDOM_SEED": 2026
+  },
+  "stability_recheck": {
+    "moved": false,
+    "best_L_recheck": 40,
+    "best_ALPHA_recheck": 0.05
+  },
+  "comparison_fixture_count": 6862,
+  "timestamp": "2026-06-07T02:19:52.027150+00:00"
+}

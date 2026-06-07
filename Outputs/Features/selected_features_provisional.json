@@ -1,0 +1,67 @@
+{
+  "selected_features": [
+    "team_avg_gls_f_v",
+    "team_avg_xg_f",
+    "team_avg_xg_c",
+    "opp_avg_xg_c",
+    "game_week_normalised"
+  ],
+  "group_winners_pass1": {
+    "team_attack": [
+      "team_avg_gls_f_v",
+      "team_avg_xg_f"
+    ],
+    "team_defence": [
+      "team_avg_xg_c"
+    ],
+    "opp_attack": [],
+    "opp_defence": [
+      "opp_avg_xg_c"
+    ],
+    "league_priors": [],
+    "context": [
+      "game_week_normalised"
+    ],
+    "movement": []
+  },
+  "group_winners_pass2": {
+    "team_attack": [
+      "team_avg_gls_f_v",
+      "team_avg_xg_f"
+    ],
+    "team_defence": [
+      "team_avg_xg_c"
+    ],
+    "opp_attack": [],
+    "opp_defence": [
+      "opp_avg_xg_c"
+    ],
+    "league_priors": [],
+    "context": [
+      "game_week_normalised"
+    ],
+    "movement": []
+  },
+  "candidate_features_pass1": [
+    "team_avg_gls_f_v",
+    "team_avg_xg_f",
+    "team_avg_xg_c",
+    "opp_avg_xg_c",
+    "game_week_normalised"
+  ],
+  "candidate_features_pass2": [
+    "team_avg_gls_f_v",
+    "team_avg_xg_f",
+    "team_avg_xg_c",
+    "opp_avg_xg_c",
+    "game_week_normalised"
+  ],
+  "full_logloss": 1.845349608313009,
+  "candidate_pass1_logloss": 1.8483850446974224,
+  "provisional_logloss": 1.8483850446974224,
+  "provisional_logloss_std": 0.005837012490158432,
+  "delta_provisional_vs_full": 0.0030354363844133925,
+  "baseline_logloss": 1.8489418509912183,
+  "delta_provisional_vs_baseline": -0.0005568062937959528,
+  "selection_tolerance": 0.001
+}

@@ -1,0 +1,33 @@
+{
+  "selected_features": [
+    "team_avg_gls_f_v",
+    "team_avg_xg_f",
+    "team_avg_xg_c",
+    "opp_avg_xg_c",
+    "game_week_normalised"
+  ],
+  "best_L": 40,
+  "best_ALPHA": 0.05,
+  "best_xgb_params": {
+    "colsample_bytree": 0.6,
+    "enable_categorical": true,
+    "learning_rate": 0.01,
+    "max_depth": 3,
+    "min_child_weight": 5,
+    "n_estimators": 400,
+    "objective": "count:poisson",
+    "random_state": 2026,
+    "reg_alpha": 1,
+    "reg_lambda": 0.1,
+    "subsample": 0.5,
+    "verbosity": 0
+  },
+  "test_season": "2024/2025",
+  "n_test_fixtures": 2488,
+  "nb04_dev_val_logloss": 1.8403436680543588,
+  "test_logloss_model": 1.8257548212378136,
+  "test_logloss_baseline": 1.8289856799265702,
+  "dev_to_test_gap": -0.014588846816545153,
+  "random_seed": 2026,
+  "timestamp": "2026-06-07T13:41:53.084004+00:00"
+}

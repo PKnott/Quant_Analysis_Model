@@ -1,0 +1,16 @@
+# venv
+bin/
+include/
+lib/
+lib64
+share/
+etc/
+pyvenv.cfg
+
+# macOS / editors
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
