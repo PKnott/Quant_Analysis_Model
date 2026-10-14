@@ -103,7 +103,7 @@ Held-out test set (**2024/25 + 2025/26, 2,488 fixtures**):
 
 - **Goal independence**: the scoreline distribution multiplies the two teams' score distributions as if independent, so 1X2 / correct-score prices in the low-score region are approximate (draws slightly under-predicted). Minimal impact on totals.
 - **Conditional Poisson assumption**: checked only indirectly, via market calibration.
-- **Limited input data**: the dataset contains no betting odds and no team-sheet, injury, rest, or in-play information, so the model works from pre-match aggregates only.
+- **Limited input data**: the dataset contains no market prices and no team-sheet, injury, rest, or in-play information, so the model works from pre-match aggregates only.
 
 ---
 
